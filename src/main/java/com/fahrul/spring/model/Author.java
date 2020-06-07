@@ -3,7 +3,10 @@ package com.fahrul.spring.model;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
-@Component
+//@Component
+
+// Materi Expresion Laungue
+@Component("author")
 public class Author {
 	
 	private String name;

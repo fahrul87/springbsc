@@ -2,7 +2,7 @@ package com.fahrul.spring;
 
 import java.util.UUID;
 
-
+import javax.validation.Validator;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -18,6 +18,7 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.context.support.ResourceBundleMessageSource;
 import org.springframework.core.env.Environment;
 import org.springframework.validation.beanvalidation.LocalValidatorFactoryBean;
+import org.springframework.validation.beanvalidation.MethodValidationPostProcessor;
 
 import com.fahrul.spring.model.Author;
 import com.fahrul.spring.model.DataBean;
@@ -46,12 +47,18 @@ public class BelajarConfiguration {
 	@Autowired
 	private Environment environment;
 	
-	// Materi Bean Validation
+	// materi Bean Validation
+//	@Bean
+//	public MethodValidationPostProcessor createMethodValidationPostProcessor() {
+//		return new MethodValidationPostProcessor();
+//	}
+	
+	// Materi Bean Validation //error
 //	@Bean
 //	public Validator createValidator() {
 //		return new LocalValidatorFactoryBean();
 //	}
-	
+//	
 	// Materi Property Source
 //	@Bean
 //	public Author createAuthor() {
