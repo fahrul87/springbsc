@@ -5,6 +5,7 @@ import java.util.Locale;
 import java.util.Set;
 
 import javax.validation.ConstraintViolation;
+import javax.validation.ConstraintViolationException;
 import javax.validation.Validator;
 
 import org.springframework.boot.SpringApplication;
@@ -16,12 +17,14 @@ import org.springframework.validation.DataBinder;
 
 import com.fahrul.spring.model.Author;
 import com.fahrul.spring.model.DataBean;
+import com.fahrul.spring.model.Exam;
 import com.fahrul.spring.model.FileBean;
 import com.fahrul.spring.model.OtherBean;
 import com.fahrul.spring.model.SampleBean;
 import com.fahrul.spring.model.SayHello;
 import com.fahrul.spring.model.User;
 import com.fahrul.spring.service.DatabaseConfig;
+import com.fahrul.spring.service.UserService;
 import com.fahrul.spring.validation.AuthorValidator;
 
 //@SpringBootApplication
@@ -125,18 +128,39 @@ public class FahrulSpringApplication {
 		
 		
 		// Materi Validator Bean
-		Validator validator = context.getBean(Validator.class);
+//		Validator validator = context.getBean(Validator.class);
+//		
+//		User user = new User();
+//		user.setEmail("salah");
+//		user.setId("0");
+//		user.setName("");
+//		
+//		// Cara ke 2 Bean Vaidation
+//		
+//		UserService service = context.getBean(UserService.class);
+//		
+//		
+//		try {
+////			service.save(user);
+//			service.getByid("3123");
+//		}catch (ConstraintViolationException ex){
+//			ex.getConstraintViolations().stream().forEach((error)->{
+//				System.out.println(error.getMessage());
+//			});
+//		}
+//		// cara pertama bean validation
+////		Set<ConstraintViolation<User>> result = validator.validate(user);
+////				
+////		result.forEach((constraint) ->{
+////			System.out.println(constraint.getMessage());
+////		});
 		
-		User user = new User();
-		user.setEmail("salah");
-		user.setId("0");
-		user.setName("");
+		// materi Expresion Langue
 		
-		Set<ConstraintViolation<User>> result = validator.validate(user);
-				
-		result.forEach((constraint) ->{
-			System.out.println(constraint.getMessage());
-		});
+		Exam beanExam = context.getBean(Exam.class);
+		System.out.println(beanExam.getAuthorName());
+		System.out.println(beanExam.getNilai());
+		
 		
 	}
 
