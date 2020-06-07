@@ -2,7 +2,7 @@ package com.fahrul.spring;
 
 import java.util.UUID;
 
-
+import javax.validation.Validator;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;

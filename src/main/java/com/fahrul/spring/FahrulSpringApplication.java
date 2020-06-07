@@ -4,7 +4,8 @@ import java.io.IOException;
 import java.util.Locale;
 import java.util.Set;
 
-
+import javax.validation.ConstraintViolation;
+import javax.validation.Validator;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -104,38 +105,38 @@ public class FahrulSpringApplication {
 		
 		// Materi Spring Validator
 		
-		Author author = new Author("fahrul","istimiwir@gmail.com");
-		DataBinder dataBinder = new DataBinder(author);
-		dataBinder.addValidators(new AuthorValidator());
-		dataBinder.validate();
-		
-		BindingResult result = dataBinder.getBindingResult();
-		
-		if(result.hasErrors()) {
-			//error
-			result.getAllErrors().stream().forEach((error)->{
-				String message = messageSource.getMessage(error.getCode(),null, Locale.getDefault());
-				System.out.println(message);
-			});
-		}else {
-			// Tidak terjadi error
-			System.out.println("Tidak Terjadi Error");
-		}
+//		Author author = new Author("fahrul","istimiwir@gmail.com");
+//		DataBinder dataBinder = new DataBinder(author);
+//		dataBinder.addValidators(new AuthorValidator());
+//		dataBinder.validate();
+//		
+//		BindingResult result = dataBinder.getBindingResult();
+//		
+//		if(result.hasErrors()) {
+//			//error
+//			result.getAllErrors().stream().forEach((error)->{
+//				String message = messageSource.getMessage(error.getCode(),null, Locale.getDefault());
+//				System.out.println(message);
+//			});
+//		}else {
+//			// Tidak terjadi error
+//			System.out.println("Tidak Terjadi Error");
+//		}
 		
 		
 		// Materi Validator Bean
-//		Validator validator = context.getBean(Validator.class);
-//		
-//		User user = new User();
-//		user.setEmail("salah");
-//		user.setId("0");
-//		user.setName("");
-//		
-//		Set<ConstraintViolation<User>> result = validator.validate(user);
-//				
-//		result.forEach((constraint) ->{
-//			System.out.println(constraint.getMessage());
-//		});
+		Validator validator = context.getBean(Validator.class);
+		
+		User user = new User();
+		user.setEmail("salah");
+		user.setId("0");
+		user.setName("");
+		
+		Set<ConstraintViolation<User>> result = validator.validate(user);
+				
+		result.forEach((constraint) ->{
+			System.out.println(constraint.getMessage());
+		});
 		
 	}
 
